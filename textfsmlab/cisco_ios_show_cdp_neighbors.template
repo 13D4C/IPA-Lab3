@@ -1,0 +1,11 @@
+Value NEIGHBOR (\S+)
+Value LOCAL_INTERFACE (\S+)
+Value CAPABILITY (.*)
+Value PLATFORM (.*)
+Value NEIGHBOR_INTERFACE (\S+)
+
+Start
+  ^${NEIGHBOR}\s+${LOCAL_INTERFACE}\s+\d+\s+.*?${CAPABILITY}\s+${PLATFORM}\s+${NEIGHBOR_INTERFACE} -> Neighbor
+Neighbor
+  ^${NEIGHBOR}\s+${LOCAL_INTERFACE}\s+\d+\s+.*?${CAPABILITY}\s+${PLATFORM}\s+${NEIGHBOR_INTERFACE} -> Record
+  ^$$ -> End
