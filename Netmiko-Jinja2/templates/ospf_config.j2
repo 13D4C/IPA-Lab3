@@ -1,0 +1,9 @@
+! OSPF Configuration for {{ device_name }}
+router ospf 1
+ router-id {{ ospf.router_id }}
+{% for network in ospf.networks %}
+ network {{ network.ip }} {{ network.wildcard }} area {{ ospf.area }}
+{% endfor %}
+{% if ospf.is_default_originate %}
+ default-information originate
+{% endif %}
